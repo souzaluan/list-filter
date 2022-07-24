@@ -6,12 +6,12 @@ This is a project developed to study redux. Creating a product filter from a lis
 
 ### React Redux
 
-[link](https://react-redux.js.org/)
+https://react-redux.js.org/
 
 ### Mirage JS
 
-[link](https://miragejs.com/)
+https://miragejs.com/
 
 ### Faker
 
-[link](https://fakerjs.dev/)
+https://fakerjs.dev/
