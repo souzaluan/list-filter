@@ -29,11 +29,9 @@ export const FilterDataContextProvider = ({
   const [filterData, setFilterData] = useState<FilterData[]>([]);
 
   useEffect(() => {
-    (async () => {
-      const { data } = await api.get("product");
-
-      return setInitialProducts(data.products);
-    })();
+    api
+      .get("product")
+      .then((response) => setInitialProducts(response.data.products));
   }, []);
 
   useEffect(() => {

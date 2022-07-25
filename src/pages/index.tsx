@@ -36,10 +36,11 @@ const Home: NextPage<Props> = () => {
   );
 
   useEffect(() => {
-    (async () => {
-      const { data } = await api.get("product");
-      return dispatch(ActionsProducts.setProducts(data.products));
-    })();
+    api
+      .get("product")
+      .then((response) =>
+        dispatch(ActionsProducts.setProducts(response.data.products))
+      );
   }, []);
 
   useEffect(() => {
@@ -51,15 +52,15 @@ const Home: NextPage<Props> = () => {
   }, [filters]);
 
   useEffect(() => {
-    (async () => {
-      const query = currentFilters
-        ?.map((item) => `${item.type}=${item.value.replaceAll(" ", "%20")}`)
-        .join("&");
+    const query = currentFilters
+      ?.map((item) => `${item.type}=${item.value.replaceAll(" ", "%20")}`)
+      .join("&");
 
-      const { data } = await api.get("product" + "?" + query);
-
-      return dispatch(ActionsProducts.setProducts(data.products));
-    })();
+    api
+      .get("product" + "?" + query)
+      .then((response) =>
+        dispatch(ActionsProducts.setProducts(response.data.products))
+      );
   }, [currentFilters]);
 
   return (
